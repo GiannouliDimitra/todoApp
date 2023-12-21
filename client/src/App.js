@@ -18,7 +18,7 @@ function App() {
   function getAllTodos() {
   try {
     axios
-    .get("http://localhost:8000/todos")
+    .get("https://todoapp-cgvj.onrender.com/todos")
     .then ((res) => {
       setTodos(res.data);
       console.log("ALL" , res.data);

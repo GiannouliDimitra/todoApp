@@ -12,7 +12,7 @@ function AddTodo({ getAllTodos , todo , setTodo, todos, setTodos }) {
   const addNewTodo = () => {
     try {
     axios
-    .post("http://localhost:8000/todo/create", todo)
+    .post("https://todoapp-cgvj.onrender.com/todo/create", todo)
     .then((res) => alert("The task " + res.data.text + " is added"))
     .then(() => getAllTodos())
     .catch((error) => console.log (error));

@@ -17,7 +17,7 @@ function TodoItem({ getAllTodos, todos, setTodos, todo, setTodo }) {
         const newTodos = todos.map(todo =>{
           if(id===todo._id){
             axios
-            .delete(`http://localhost:8000/todo/${id}`)
+            .delete(`https://todoapp-cgvj.onrender.com/todo/${id}`)
             .then (res=> alert(res.data.msg))
             .then (() => getAllTodos())
             .catch(err => console.log(err));
@@ -46,7 +46,7 @@ function TodoItem({ getAllTodos, todos, setTodos, todo, setTodo }) {
     try{
       console.log("this is the id" , todoId, "and the value" , updatedValue)
    axios
-        .put((`http://localhost:8000/todo/${todoId}`), {text:updatedValue})
+        .put((`https://todoapp-cgvj.onrender.com/todo/${todoId}`), {text:updatedValue})
         .then((res) => console.log(res.data))
         .then (() => getAllTodos())
         .catch((error) => console.log (error));
@@ -63,7 +63,7 @@ function TodoItem({ getAllTodos, todos, setTodos, todo, setTodo }) {
        todos.map(todo =>{
         if(id===todo._id){
          axios
-         .put((`http://localhost:8000/todo/${id}`),{
+         .put((`https://todoapp-cgvj.onrender.com/todo/${id}`),{
             status: todo.status ==="pending" ? "done" : "pending",
             isChecked: todo.isChecked === false ? true : false,
            })
@@ -85,7 +85,7 @@ function makeImportant(id) {
     todos.map(todo =>{
      if(id===todo._id){
       axios
-      .put((`http://localhost:8000/todo/${id}`),{
+      .put((`https://todoapp-cgvj.onrender.com/todo/${id}`),{
         isImportant: todo.isImportant ==="notImportant" ? "important" : "notImportant",
         })
      .then((res) => console.log(res.data))
