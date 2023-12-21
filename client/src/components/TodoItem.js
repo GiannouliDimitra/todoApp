@@ -1,4 +1,5 @@
 import axios from "axios";
+import Swal from 'sweetalert2';
 import"./TodoItem.css";
 import { useState } from "react";
 
@@ -11,26 +12,33 @@ function TodoItem({ getAllTodos, todos, setTodos, todo, setTodo }) {
 
   //delete
   function deleteTodo(id) {
-    try {
-      let result = window.confirm("Are you sure you want to delete this task?");
-      if(result) {
-        const newTodos = todos.map(todo =>{
-          if(id===todo._id){
-            axios
-            .delete(`https://todoapp-cgvj.onrender.com/todo/${id}`)
-            .then (res=> alert(res.data.msg))
-            .then (() => getAllTodos())
-            .catch(err => console.log(err));
-          }
-        return todo;
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes!",
+      cancelButtonText:"No",
+    }).then((result) => {
+      if (result.isConfirmed) { 
+        try {
+          axios.delete(`https://todoapp-cgvj.onrender.com/${id}`)
+          .then(() => {
+            getAllTodos();
+          })
+         
+        } catch (error) {
+          console.log("delete todo", error);
+        }
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          confirmButtonColor:"#3085d6",
         });
-      console.log("Delete test", newTodos)
       }
-  } catch (error) {
-    console.log(error);
-    }; 
-};
-
+    });
+  };
 //edit
   function handleUpdatedTask (e) {
      setUpdatedValue(e.target.value);
