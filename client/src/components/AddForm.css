@@ -1,0 +1,26 @@
+.inputField{
+border: 2px solid black;
+width:380px;
+height:60px;
+background-color: white;
+display: flex;
+justify-content: space-between;
+margin:10px;
+border-radius: 8px;
+}
+input{
+    width:300px;
+    border: none;
+    background-color: transparent;
+    font-size: 18px;
+}
+input:focus {
+ outline:none;
+}
+.addBut{
+    height:40px;
+    margin:10px 10px 10px 10px;
+}
+.addIcon{
+    size:50px
+}

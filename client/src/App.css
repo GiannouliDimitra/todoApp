@@ -1,0 +1,13 @@
+.Main_Container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.App{
+  
+   border: 1px solid black;
+   border-radius: 20px;
+   background-color: rgb(246, 246, 246);
+   width:400px;
+}
