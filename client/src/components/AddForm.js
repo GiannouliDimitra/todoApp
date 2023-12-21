@@ -10,6 +10,10 @@ function AddTodo({ getAllTodos , todo , setTodo, todos, setTodos }) {
   };
   // Add task
   const addNewTodo = () => {
+    console.log (todo.text)
+    if (todo.text.length<2) {
+      alert ("Please insert a task")
+    }
     try {
     axios
     .post("https://todoapp-cgvj.onrender.com/todo/create", todo)
