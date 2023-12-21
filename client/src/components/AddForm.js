@@ -1,5 +1,6 @@
 // AddTodo component
 import axios from "axios";
+import Swal from 'sweetalert2';
 import "./AddForm.css"
 
 function AddTodo({ getAllTodos , todo , setTodo, todos, setTodos }) {
@@ -12,17 +13,20 @@ function AddTodo({ getAllTodos , todo , setTodo, todos, setTodos }) {
   const addNewTodo = () => {
     console.log (todo.text)
     if (todo.text.length<2) {
-      alert ("Please insert a task")
+      Swal.fire("The field is empty.Please insert a task")
     }
-    try {
-    axios
-    .post("https://todoapp-cgvj.onrender.com/todo/create", todo)
-    .then((res) => alert("The task " + res.data.text + " is added"))
-    .then(() => getAllTodos())
-    .catch((error) => console.log (error));
-    } catch (error) {
-      console.log(error)
+    else {
+      try {
+        axios
+        .post("https://todoapp-cgvj.onrender.com/todo/create", todo)
+        .then((res) => alert("The task " + res.data.text + " is added"))
+        .then(() => getAllTodos())
+        .catch((error) => console.log (error));
+        } catch (error) {
+          console.log(error)
+        }
     }
+    
   };
 
   return (
