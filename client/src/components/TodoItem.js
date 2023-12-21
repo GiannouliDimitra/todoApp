@@ -23,7 +23,7 @@ function TodoItem({ getAllTodos, todos, setTodos, todo, setTodo }) {
     }).then((result) => {
       if (result.isConfirmed) { 
         try {
-          axios.delete(`https://todoapp-cgvj.onrender.com/${id}`)
+          axios.delete(`https://todoapp-cgvj.onrender.com/todo/${id}`)
           .then(() => {
             getAllTodos();
           })

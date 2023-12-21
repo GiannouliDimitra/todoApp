@@ -19,7 +19,7 @@ function AddTodo({ getAllTodos , todo , setTodo, todos, setTodos }) {
       try {
         axios
         .post("https://todoapp-cgvj.onrender.com/todo/create", todo)
-        .then((res) => alert("The task " + res.data.text + " is added"))
+        .then((res) => Swal.fire("The task " + res.data.text + " is added"))
         .then(() => getAllTodos())
         .catch((error) => console.log (error));
         } catch (error) {
